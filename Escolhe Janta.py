@@ -1,15 +1,17 @@
 import random
-import Path
+from pathlib import Path
 
-def addArquivo(lista)
+def addArquivo(lista):
+    
     with open ('banco de lista.txt','w') as file:
 
         for v in lista:
-                file.write (v)
-                file.write ("\n")
+            file.write (v)
+            file.write (";")
+                
+def firstTime():
 
-def firstTime(inicio):
-    
+    inicio = input ("Vamos descobrir o que jantar hoje? ")
     lista = []
     x = 0
     y = 0
@@ -38,34 +40,47 @@ def firstTime(inicio):
 
             print (lista[decisão])
 
-    addArquivo(lista)
+            addArquivo(lista)
 
+        else:
+            stop()
     
 def anterior():
-
-    from pathlib
 
     if Path('banco de lista.txt').is_file():
         return True
     else:
         return False
 
-def notFirst(inicio)
+def notFirst():
+
+    with open('banco de lista.txt',"r") as file:
+        content = file.read()
+        contentList = content.split(";")
+
+    del contentList[-1]
+    print("Suas opções foram: ",contentList)
     antiga = input("Deseja utilizar a última lista? ")
     antiga = str.lower(antiga)
 
     if antiga == "sim":
         
+        z = (len(contentList)) - 1
+        decisão = random.randint(0, z)
+        print (contentList[decisão])
+
+    else:
+        firstTime()
 
 def caminho():
-    inicio = input ("Vamos descobrir o que jantar hoje? ")
+    
     verificador = anterior()
 
     if verificador:
         notFirst()
 
     else:
-        escolheJanta(inicio)
+        firstTime()
 
 
 caminho()
